@@ -64,11 +64,11 @@ const Hero: React.FC = () => {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 animate-fade-in-up delay-800">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">500+</div>
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">100+</div>
               <div className="text-gray-600 dark:text-gray-400">{t('hero.stats.projects')}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">1000+</div>
+              <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">200+</div>
               <div className="text-gray-600 dark:text-gray-400">{t('hero.stats.students')}</div>
             </div>
             <div className="text-center">

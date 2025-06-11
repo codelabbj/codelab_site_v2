@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code2, Heart } from 'lucide-react';
+// import { Code2, Heart } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer: React.FC = () => {
@@ -23,14 +23,17 @@ const Footer: React.FC = () => {
               {t('footer.description')}
             </p>
             <div className="flex space-x-4">
-              <button className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/company/code-lab-bj/" className="text-gray-400 hover:text-white transition-colors">
                 LinkedIn
-              </button>
+              </a>
               <button className="text-gray-400 hover:text-white transition-colors">
-                Twitter
+                Facebook
               </button>
+              <a href="https://wa.me/22947030588" className="text-gray-400 hover:text-white transition-colors">
+                Whatsapp
+              </a>
               <button className="text-gray-400 hover:text-white transition-colors">
-                GitHub
+                Youtube
               </button>
             </div>
           </div>
@@ -59,9 +62,9 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400 flex items-center justify-center space-x-2">
-            <span>© 2024 CodeLab. {t('footer.made')}</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current" />
-            <span>{t('footer.in')}</span>
+            <span>© 2024 CodeLab</span>
+            {/* <Heart className="w-4 h-4 text-red-500 fill-current" />
+            <span>{t('footer.in')}</span> */}
           </p>
         </div>
       </div>

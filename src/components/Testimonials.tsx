@@ -1,7 +1,41 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
+// CSS moved to an external stylesheet or handled via global CSS imports.
+const styles = `
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionReveal 0.8s forwards;
+}
+@keyframes sectionReveal {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+.partners-carousel .slick-slide > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+`;
+
+if (typeof document !== "undefined" && !document.getElementById("testimonials-styles")) {
+  const styleTag = document.createElement("style");
+  styleTag.id = "testimonials-styles";
+  styleTag.innerHTML = styles;
+  document.head.appendChild(styleTag);
+}
 const Testimonials: React.FC = () => {
   const { t } = useLanguage();
 
@@ -35,8 +69,14 @@ const Testimonials: React.FC = () => {
     { name: "DigitalPro", logo: "DP" },
     { name: "CodeFirst", logo: "CF" },
     { name: "WebMasters", logo: "WM" },
+    { name: "AppFactory", logo: "AF" },
+    { name: "DigitalPro", logo: "DP" },
+    { name: "CodeFirst", logo: "CF" },
+    { name: "WebMasters", logo: "WM" },
     { name: "AppFactory", logo: "AF" }
   ];
+
+  
 
   return (
     <section id="testimonials" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
@@ -89,29 +129,60 @@ const Testimonials: React.FC = () => {
           ))}
         </div>
 
-        {/* Partners Section */}
+       
+        {/* Partners Carousel */}
         <div className="section-reveal">
           <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
             {t('testimonials.partners')}
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-6">
+          <Slider
+            className="partners-carousel"
+            dots={false}
+            infinite={true}
+            speed={1000}
+            slidesToShow={5}
+            slidesToScroll={1}
+            autoplay={true}
+            autoplaySpeed={3000}
+            pauseOnHover={true}
+            cssEase="linear"
+            responsive={[
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 4,
+                }
+              },
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 3,
+                }
+              },
+              {
+                breakpoint: 640,
+                settings: {
+                  slidesToShow: 2,
+                }
+              }
+            ]}
+          >
             {partners.map((partner, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover-lift border border-gray-100 dark:border-gray-700 transition-colors duration-300"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">{partner.logo}</span>
+              <div key={index} className="px-4">
+                <div className="flex items-center justify-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 transition-all duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">{partner.logo}</span>
+                  </div>
                 </div>
               </div>
             ))}
-          </div>
+          </Slider>
         </div>
       </div>
     </section>
   );
+  
 };
 
 export default Testimonials;

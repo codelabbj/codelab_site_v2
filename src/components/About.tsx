@@ -49,20 +49,93 @@ const About: React.FC = () => {
               {t('about.description2')}
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium">
-                React & Next.js
-              </div>
-              <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
-                Node.js & Python
-              </div>
-              <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
-                Cloud & DevOps
-              </div>
-              <div className="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 rounded-full text-sm font-medium">
-                Mobile & IA
-              </div>
+           <div className="flex flex-wrap gap-4">
+            {/* Frontend Technologies */}
+            <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium">
+              React & Next.js
             </div>
+            <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium">
+              Angular & Vue.js
+            </div>
+
+            {/* Backend Technologies */}
+            <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
+              java Spring & Django
+            </div>
+            <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
+              Node.js & FastApi
+            </div>
+            <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
+              .NET
+            </div>
+
+            {/* Mobile Technologies */}
+            <div className="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300 rounded-full text-sm font-medium">
+              Flutter & React Native
+            </div>
+            <div className="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300 rounded-full text-sm font-medium">
+              Swift & Kotlin
+            </div>
+
+            {/* Cloud & DevOps */}
+            <div className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 rounded-full text-sm font-medium">
+              AWS & Azure
+            </div>
+            <div className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 rounded-full text-sm font-medium">
+              Google Cloud
+            </div>
+            <div className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 rounded-full text-sm font-medium">
+              Docker & Kubernetes
+            </div>
+
+            {/* AI & ML */}
+            <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
+              TensorFlow & PyTorch
+            </div>
+            <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
+              Hugging Face & Hugging Face
+            </div>
+            <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
+              Computer Vision
+            </div>
+            <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
+              NLP
+            </div>
+
+            {/* Business Intelligence */}
+            <div className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 rounded-full text-sm font-medium">
+              Power BI
+            </div>
+
+            {/* Web3 & Blockchain */}
+            <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-sm font-medium">
+              Blockchain
+            </div>
+            <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-sm font-medium">
+              Web3
+            </div>
+            <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-sm font-medium">
+              Solidity
+            </div>
+
+            {/* Extended Reality */}
+            <div className="px-4 py-2 bg-violet-100 dark:bg-violet-900/30 text-violet-800 dark:text-violet-300 rounded-full text-sm font-medium">
+              AR/VR
+            </div>
+
+            {/* PHP Frameworks */}
+            <div className="px-4 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 rounded-full text-sm font-medium">
+              Laravel
+            </div>
+            <div className="px-4 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 rounded-full text-sm font-medium">
+              Symfony
+            </div>
+
+            {/* Other Frameworks */}
+            <div className="px-4 py-2 bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 rounded-full text-sm font-medium">
+              Ruby on Rails
+            </div>
+          </div>
           </div>
 
           {/* Values Grid */}
