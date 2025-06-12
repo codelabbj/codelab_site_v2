@@ -64,16 +64,16 @@ const Testimonials: React.FC = () => {
   ];
 
   const partners = [
-    { name: "TechStart", logo: "TS" },
-    { name: "InnovCorp", logo: "IC" },
-    { name: "DigitalPro", logo: "DP" },
-    { name: "CodeFirst", logo: "CF" },
-    { name: "WebMasters", logo: "WM" },
-    { name: "AppFactory", logo: "AF" },
-    { name: "DigitalPro", logo: "DP" },
-    { name: "CodeFirst", logo: "CF" },
-    { name: "WebMasters", logo: "WM" },
-    { name: "AppFactory", logo: "AF" }
+    { name: "Minfo", logo: "/minfo.avif" },
+    { name: "Blaffa", logo: "/blaffa.png" },
+    { name: "Djofo", logo: "/djofo.png" },
+    { name: "Flow Money", logo: "/flowmoney.png" },
+    { name: "Indigo", logo: "/indigo.png" },
+    { name: "LamedCash", logo: "/lamedcash.webp" },
+    { name: "Yapson", logo: "/yapson.webp" },
+    { name: "Yutu", logo: "/yutu.png" },
+    // { name: "WebMasters", logo: "WM" },
+    // { name: "AppFactory", logo: "AF" }
   ];
 
   
@@ -171,10 +171,19 @@ const Testimonials: React.FC = () => {
             {partners.map((partner, index) => (
               <div key={index} className="px-4">
                 <div className="flex items-center justify-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700 transition-all duration-300">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">{partner.logo}</span>
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center">
+                    {/* <span className="text-white font-bold text-sm">{partner.logo}</span> */}
+                    <img
+                        src={partner.logo}
+                        alt={partner.name}
+                        className="object-cover"
+                      />
                   </div>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {partner.name}
+                  </span>
                 </div>
+                
               </div>
             ))}
           </Slider>
