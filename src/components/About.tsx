@@ -177,12 +177,11 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 
-
 export default function CodeLabAbout() {
   const { t } = useLanguage();
   const { theme } = useTheme();
 
-    const styles = {
+  const styles = {
     '*': {
       margin: 0,
       padding: 0,
@@ -195,19 +194,18 @@ export default function CodeLabAbout() {
       lineHeight: 1.6,
       minHeight: '100vh',
       width: '100%',
-      padding: '0 8rem', // Add padding for smaller screens
+      padding: '0 3rem', // Reduced padding for mobile
       boxSizing: 'border-box',
-      margin: 0, // Remove default margin
+      margin: 0,
     },
     container: {
       maxWidth: '1280px',
       margin: '0 auto',
       padding: '80px 20px',
-      
     },
     header: {
       textAlign: 'center',
-      marginBottom: '80px',
+      marginBottom: '60px', // Reduced for mobile
       position: 'relative',
     },
     headerBefore: {
@@ -221,7 +219,7 @@ export default function CodeLabAbout() {
       borderRadius: '2px',
     },
     headerH1: {
-      fontSize: '3.5rem',
+      fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', // Responsive font size
       fontWeight: 700,
       marginBottom: '20px',
       background: 'linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4)',
@@ -231,7 +229,7 @@ export default function CodeLabAbout() {
       animation: 'glow 3s ease-in-out infinite alternate',
     },
     title: {
-      fontSize: '3.5rem',
+      fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
       fontWeight: 800,
       marginBottom: '1.5rem',
       background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
@@ -240,20 +238,21 @@ export default function CodeLabAbout() {
       lineHeight: 1.2,
     },
     subtitle: {
-      fontSize: '1.4rem',
+      fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
       color: '#9ca3af',
       maxWidth: '600px',
       margin: '0 auto',
       fontWeight: 300,
+      padding: '0 1rem', // Add padding for mobile
     },
     grid: {
       display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: '2rem',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', // Responsive grid
+      gap: 'clamp(1.5rem, 4vw, 2rem)',
       marginTop: '4rem',
     },
     content: {
-      padding: '2rem',
+      padding: 'clamp(1.5rem, 4vw, 2rem)',
       borderRadius: '1rem',
       backgroundColor: theme === 'dark' ? 'rgba(17, 24, 39, 0.7)' : 'rgba(255, 255, 255, 0.8)',
       backdropFilter: 'blur(10px)',
@@ -265,7 +264,7 @@ export default function CodeLabAbout() {
       animation: 'slideInLeft 0.8s ease-out',
     },
     storySectionH2: {
-      fontSize: '2.2rem',
+      fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
       marginBottom: '30px',
       color: theme === 'dark' ? '#f8fafc' : '#111827',
       position: 'relative',
@@ -282,7 +281,7 @@ export default function CodeLabAbout() {
     },
     storyText: {
       justify: 'left',
-      fontSize: '1.1rem',
+      fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
       color: theme === 'dark' ? '#d1d5db' : '#374151',
       marginBottom: '25px',
       lineHeight: 1.8,
@@ -291,7 +290,7 @@ export default function CodeLabAbout() {
       background: theme === 'dark' ? 'rgba(255, 255, 255, 0.02)' : 'rgba(255, 255, 255, 0.9)',
       border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.1)',
       borderRadius: '16px',
-      padding: '30px',
+      padding: 'clamp(1.5rem, 4vw, 30px)',
       backdropFilter: 'blur(10px)',
       transition: 'all 0.3s ease',
       position: 'relative',
@@ -308,29 +307,30 @@ export default function CodeLabAbout() {
       background: 'linear-gradient(90deg, transparent, #6366f1, transparent)',
     },
     visionIcon: {
-      width: '60px',
-      height: '60px',
+      width: 'clamp(50px, 10vw, 60px)',
+      height: 'clamp(50px, 10vw, 60px)',
       background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
       borderRadius: '12px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       marginBottom: '20px',
-      fontSize: '1.5rem',
+      fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
     },
     visionCardH3: {
-      fontSize: '1.4rem',
+      fontSize: 'clamp(1.2rem, 3vw, 1.4rem)',
       marginBottom: '15px',
       color: theme === 'dark' ? '#f8fafc' : '#111827',
     },
     visionCardP: {
       color: theme === 'dark' ? '#d1d5db' : '#4b5563',
       lineHeight: 1.7,
+      fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
     },
     featuresGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '20px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+      gap: 'clamp(1rem, 3vw, 20px)',
       marginBottom: '60px',
       marginTop: '60px',
     },
@@ -338,23 +338,22 @@ export default function CodeLabAbout() {
       background: theme === 'dark' ? 'rgba(255, 255, 255, 0.03)' : 'rgba(255, 255, 255, 0.9)',
       border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.1)',
       borderRadius: '12px',
-      padding: '30px',
+      padding: 'clamp(1.5rem, 4vw, 30px)',
       textAlign: 'center',
       transition: 'all 0.3s ease',
       position: 'relative',
       overflow: 'hidden',
       animation: 'fadeInUp 0.8s ease-out',
     },
-
     featureIcon: {
-      width: '70px',
-      height: '70px',
+      width: 'clamp(60px, 12vw, 70px)',
+      height: 'clamp(60px, 12vw, 70px)',
       margin: '0 auto 20px',
       borderRadius: '16px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      fontSize: '1.8rem',
+      fontSize: 'clamp(1.5rem, 3.5vw, 1.8rem)',
       transition: 'all 0.3s ease',
     },
     missionIcon: {
@@ -370,7 +369,7 @@ export default function CodeLabAbout() {
       background: 'linear-gradient(135deg, #10b981, #059669)',
     },
     featureCardH3: {
-      fontSize: '1.3rem',
+      fontSize: 'clamp(1.1rem, 2.8vw, 1.3rem)',
       marginBottom: '15px',
       color: theme === 'dark' ? '#f8fafc' : '#111827',
       fontWeight: 600,
@@ -378,77 +377,65 @@ export default function CodeLabAbout() {
     featureCardP: {
       color: theme === 'dark' ? '#9ca3af' : '#4b5563',
       lineHeight: 1.6,
+      fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
     },
     statsSection: {
       background: theme === 'dark' ? 'rgba(255, 255, 255, 0.02)' : 'rgba(255, 255, 255, 0.9)',
       borderRadius: '20px',
-      padding: '50px',
+      padding: 'clamp(30px, 6vw, 50px)',
       marginTop: '60px',
       textAlign: 'center',
       border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.1)',
     },
     statsGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-      gap: '40px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
+      gap: 'clamp(20px, 5vw, 40px)',
     },
-    // statItem: {
-    //   animation: 'fadeInUp 1s ease-out',
-    // },
-    // statNumber: {
-    //   fontSize: '3rem',
-    //   fontWeight: 700,
-    //   background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-    //   WebkitBackgroundClip: 'text',
-    //   WebkitTextFillColor: 'transparent',
-    //   backgroundClip: 'text',
-    //   marginBottom: '10px',
-    //   display: 'block',
-    // },
-    // statLabel: {
-    //   color: '#9ca3af',
-    //   fontSize: '1.1rem',
-    //   textTransform: 'uppercase',
-    //   letterSpacing: '1px',
-    // },
-    
     stats: {
       display: 'flex',
       justifyContent: 'space-between',
       marginTop: '3rem',
       flexWrap: 'wrap',
-      gap: '1rem',
+      gap: 'clamp(1rem, 3vw, 1rem)',
     },
     statItem: {
       textAlign: 'center',
       flex: '1',
-      minWidth: '120px',
+      minWidth: 'clamp(100px, 20vw, 120px)',
     },
     statNumber: {
       display: 'block',
-      fontSize: '2.5rem',
+      fontSize: 'clamp(2rem, 5vw, 2.5rem)',
       fontWeight: 700,
       color: theme === 'dark' ? '#8b5cf6' : '#6366f1',
       marginBottom: '0.5rem',
     },
     statLabel: {
-      fontSize: '1rem',
+      fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
       color: theme === 'dark' ? '#9ca3af' : '#6b7280',
     },
     text: {
-      fontSize: '1.1rem',
+      fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
       lineHeight: 1.8,
       marginBottom: '1.5rem',
       color: theme === 'dark' ? '#e5e7eb' : '#374151',
     },
-    // stats: {
-    //   display: 'flex',
-    //   justifyContent: 'space-between',
-    //   marginTop: '3rem',
-    //   flexWrap: 'wrap',
-    //   gap: '1rem',
-    // },
-   
+    techTagsContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: 'clamp(0.5rem, 2vw, 1rem)',
+      marginTop: '2rem',
+      justifyContent: 'center',
+    },
+    techTag: {
+      padding: 'clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px)',
+      borderRadius: '25px',
+      fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
+      fontWeight: 500,
+      whiteSpace: 'nowrap',
+      transition: 'all 0.3s ease',
+    },
   } as const;
 
   const keyframes = `
@@ -502,17 +489,6 @@ export default function CodeLabAbout() {
       z-index: 1;
     }
 
-    // .story-section-h2-after {
-    //   position: absolute;
-    //   bottom: -8px;
-    //   left: 0;
-    //   width: 100%;
-    //   height: 2px;
-    //   background: linear-gradient(90deg, #6366f1, #8b5cf6);
-    //   content: '';
-    //   pointer-events: none;
-    // }
-
     .feature-card:nth-child(2) { animation-delay: 0.2s; }
     .feature-card:nth-child(3) { animation-delay: 0.4s; }
     .feature-card:nth-child(4) { animation-delay: 0.6s; }
@@ -548,22 +524,112 @@ export default function CodeLabAbout() {
       box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
     }
 
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 2.5rem !important;
+    /* Responsive Media Queries */
+    @media (max-width: 1200px) {
+      .container {
+        padding: 60px 20px !important;
       }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 0 1rem !important;
+      }
+      
+      .container {
+        padding: 40px 15px !important;
+      }
+      
+      .header {
+        margin-bottom: 40px !important;
+      }
+      
       .content-grid {
         grid-template-columns: 1fr !important;
-        gap: 40px !important;
+        gap: 30px !important;
+        margin-top: 2rem !important;
       }
+      
       .features-grid {
         grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        margin-top: 40px !important;
+        margin-bottom: 40px !important;
       }
+      
       .stats-section {
-        padding: 30px 20px !important;
+        padding: 25px 15px !important;
+        margin-top: 40px !important;
       }
+      
+      .stats-grid {
+        gap: 25px !important;
+      }
+      
+      .tech-tags-container {
+        gap: 8px !important;
+        margin-top: 1.5rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0 0.5rem !important;
+      }
+      
       .container {
-        padding: 40px 20px !important;
+        padding: 30px 10px !important;
+      }
+      
+      .header {
+        margin-bottom: 30px !important;
+      }
+      
+      .content-grid {
+        gap: 20px !important;
+        margin-top: 1.5rem !important;
+      }
+      
+      .features-grid {
+        gap: 12px !important;
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+      }
+      
+      .stats-section {
+        padding: 20px 10px !important;
+        margin-top: 30px !important;
+      }
+      
+      .stats-grid {
+        gap: 20px !important;
+      }
+      
+      .tech-tags-container {
+        gap: 6px !important;
+        margin-top: 1rem !important;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .content-grid {
+        gap: 15px !important;
+      }
+      
+      .features-grid {
+        gap: 10px !important;
+      }
+      
+      .stats-grid {
+        gap: 15px !important;
+      }
+    }
+
+    /* Hover effects only on non-touch devices */
+    @media (hover: hover) and (pointer: fine) {
+      .tech-tag:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
     }
   `;
@@ -572,25 +638,24 @@ export default function CodeLabAbout() {
     <div style={styles.body}>
       <style dangerouslySetInnerHTML={{ __html: keyframes }} />
       
-      
-        {/* <div className="story-section-h2-after"></div> */}
+      <div style={styles.container}>
         <div style={styles.header as React.CSSProperties} className="header">
-          {/* <div style={styles.headerBefore}></div> */}
-          {/* <div style={styles.headerBefore} aria-hidden="true"></div> */}
           <h1 style={styles.headerH1}>{t('about.title')}</h1>
           <p style={styles.subtitle}>{t('about.subtitle')}</p>
+        </div>
 
         <div style={styles.grid} className="content-grid">
-          <div style={styles.storySection}>
+          <div style={{...styles.content, ...styles.storySection}}>
             <h2 style={{...styles.storySectionH2, position: 'relative'}}>
-            <div className="vision-card-before"></div>
-              {/* <div className="story-section-h2-after"> </div> */}
+              <div className="vision-card-before"></div>
               {t('about.story.title')}
             </h2>
             <p style={styles.storyText}>
-             {t('about.story.description1')}</p>
+              {t('about.story.description1')}
+            </p>
             <p style={styles.storyText}>
-             {t('about.story.description2')}</p>
+              {t('about.story.description2')}
+            </p>
           </div>
 
           <div style={styles.visionCard as React.CSSProperties} className="vision-card">
@@ -598,7 +663,7 @@ export default function CodeLabAbout() {
             <div style={styles.visionIcon}>🚀</div>
             <h3 style={styles.visionCardH3}>{t('about.vision.title')}</h3>
             <p style={styles.visionCardP}>
-             {t('about.vision.description')}
+              {t('about.vision.description')}
             </p>
           </div>
         </div>
@@ -629,80 +694,157 @@ export default function CodeLabAbout() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-4">
-             {/* Frontend Technologies */}
-             <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium">
-               React & Next.js
-             </div>
-             <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium">
-               Angular & Vue.js
-             </div>
+        <div style={styles.techTagsContainer} className="tech-tags-container">
+          {/* Frontend Technologies */}
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgb(219, 234, 254)',
+            color: theme === 'dark' ? 'rgb(147, 197, 253)' : 'rgb(30, 64, 175)'
+          }} className="tech-tag">
+            React & Next.js
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgb(219, 234, 254)',
+            color: theme === 'dark' ? 'rgb(147, 197, 253)' : 'rgb(30, 64, 175)'
+          }} className="tech-tag">
+            Angular & Vue.js
+          </div>
 
-             {/* Backend Technologies */}
-             <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
-               java Spring & Django
-             </div>
-             <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
-               Node.js & FastApi
-             </div>
-             <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
-               .NET
-             </div>
+          {/* Backend Technologies */}
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(139, 92, 246, 0.2)' : 'rgb(237, 233, 254)',
+            color: theme === 'dark' ? 'rgb(196, 181, 253)' : 'rgb(91, 33, 182)'
+          }} className="tech-tag">
+            Java Spring & Django
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(139, 92, 246, 0.2)' : 'rgb(237, 233, 254)',
+            color: theme === 'dark' ? 'rgb(196, 181, 253)' : 'rgb(91, 33, 182)'
+          }} className="tech-tag">
+            Node.js & FastApi
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(139, 92, 246, 0.2)' : 'rgb(237, 233, 254)',
+            color: theme === 'dark' ? 'rgb(196, 181, 253)' : 'rgb(91, 33, 182)'
+          }} className="tech-tag">
+            .NET
+          </div>
 
-             {/* Mobile Technologies */}
-             <div className="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300 rounded-full text-sm font-medium">
-               Flutter & React Native
-             </div>
-             <div className="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300 rounded-full text-sm font-medium">
-               Swift & Kotlin
-             </div>
+          {/* Mobile Technologies */}
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(236, 72, 153, 0.2)' : 'rgb(252, 231, 243)',
+            color: theme === 'dark' ? 'rgb(244, 114, 182)' : 'rgb(157, 23, 77)'
+          }} className="tech-tag">
+            Flutter & React Native
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(236, 72, 153, 0.2)' : 'rgb(252, 231, 243)',
+            color: theme === 'dark' ? 'rgb(244, 114, 182)' : 'rgb(157, 23, 77)'
+          }} className="tech-tag">
+            Swift & Kotlin
+          </div>
 
-             {/* Cloud & DevOps */}
-             <div className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 rounded-full text-sm font-medium">
-               AWS & Azure
-             </div>
-             <div className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 rounded-full text-sm font-medium">
-               Google Cloud
-             </div>
-             <div className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 rounded-full text-sm font-medium">
-               Docker & Kubernetes
-             </div>
+          {/* Cloud & DevOps */}
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(6, 182, 212, 0.2)' : 'rgb(207, 250, 254)',
+            color: theme === 'dark' ? 'rgb(103, 232, 249)' : 'rgb(14, 116, 144)'
+          }} className="tech-tag">
+            AWS & Azure
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(6, 182, 212, 0.2)' : 'rgb(207, 250, 254)',
+            color: theme === 'dark' ? 'rgb(103, 232, 249)' : 'rgb(14, 116, 144)'
+          }} className="tech-tag">
+            Google Cloud
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(6, 182, 212, 0.2)' : 'rgb(207, 250, 254)',
+            color: theme === 'dark' ? 'rgb(103, 232, 249)' : 'rgb(14, 116, 144)'
+          }} className="tech-tag">
+            Docker & Kubernetes
+          </div>
 
-             {/* AI & ML */}
-             <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
-               TensorFlow & PyTorch
-             </div>
-             <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
-               Hugging Face & Hugging Face
-             </div>
-             <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
-               Computer Vision
-             </div>
-             <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm font-medium">
-               NLP
-             </div>
+          {/* AI & ML */}
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(16, 185, 129, 0.2)' : 'rgb(209, 250, 229)',
+            color: theme === 'dark' ? 'rgb(110, 231, 183)' : 'rgb(6, 95, 70)'
+          }} className="tech-tag">
+            TensorFlow & PyTorch
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(16, 185, 129, 0.2)' : 'rgb(209, 250, 229)',
+            color: theme === 'dark' ? 'rgb(110, 231, 183)' : 'rgb(6, 95, 70)'
+          }} className="tech-tag">
+            Hugging Face
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(16, 185, 129, 0.2)' : 'rgb(209, 250, 229)',
+            color: theme === 'dark' ? 'rgb(110, 231, 183)' : 'rgb(6, 95, 70)'
+          }} className="tech-tag">
+            Computer Vision
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(16, 185, 129, 0.2)' : 'rgb(209, 250, 229)',
+            color: theme === 'dark' ? 'rgb(110, 231, 183)' : 'rgb(6, 95, 70)'
+          }} className="tech-tag">
+            NLP
+          </div>
 
-             {/* Business Intelligence */}
-             <div className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 rounded-full text-sm font-medium">
-               Power BI
-             </div>
+          {/* Business Intelligence */}
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(99, 102, 241, 0.2)' : 'rgb(224, 231, 255)',
+            color: theme === 'dark' ? 'rgb(165, 180, 252)' : 'rgb(67, 56, 202)'
+          }} className="tech-tag">
+            Power BI
+          </div>
 
-             {/* Web3 & Blockchain */}
-             <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-sm font-medium">
-               Blockchain
-             </div>
-             <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-sm font-medium">
-               Web3
-             </div>
-             <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-sm font-medium">
-               Solidity
-             </div>
+          {/* Web3 & Blockchain */}
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(245, 158, 11, 0.2)' : 'rgb(254, 243, 199)',
+            color: theme === 'dark' ? 'rgb(251, 191, 36)' : 'rgb(146, 64, 14)'
+          }} className="tech-tag">
+            Blockchain
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(245, 158, 11, 0.2)' : 'rgb(254, 243, 199)',
+            color: theme === 'dark' ? 'rgb(251, 191, 36)' : 'rgb(146, 64, 14)'
+          }} className="tech-tag">
+            Web3
+          </div>
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(245, 158, 11, 0.2)' : 'rgb(254, 243, 199)',
+            color: theme === 'dark' ? 'rgb(251, 191, 36)' : 'rgb(146, 64, 14)'
+          }} className="tech-tag">
+            Solidity
+          </div>
 
-             {/* Extended Reality */}
-             <div className="px-4 py-2 bg-violet-100 dark:bg-violet-900/30 text-violet-800 dark:text-violet-300 rounded-full text-sm font-medium">
-               AR/VR
-             </div>
+          {/* Extended Reality */}
+          <div style={{
+            ...styles.techTag,
+            backgroundColor: theme === 'dark' ? 'rgba(124, 58, 237, 0.2)' : 'rgb(245, 243, 255)',
+            color: theme === 'dark' ? 'rgb(196, 181, 253)' : 'rgb(76, 29, 149)'
+          }} className="tech-tag">
+            AR/VR
+          </div>
 
+          
              {/* PHP Frameworks */}
              <div className="px-4 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 rounded-full text-sm font-medium">
                Laravel
