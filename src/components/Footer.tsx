@@ -27,6 +27,8 @@ const Footer: React.FC = () => {
           <div className="flex flex-wrap gap-4 sm:gap-6">
             <a 
               href="https://www.linkedin.com/company/code-lab-bj/" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110"
             >
               <Linkedin size={18} />
@@ -38,6 +40,8 @@ const Footer: React.FC = () => {
             </button>
             <a 
               href="https://wa.me/22947030588" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-all duration-300 hover:scale-110"
             >
               <MessageCircle size={18} />
