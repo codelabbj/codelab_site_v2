@@ -195,7 +195,7 @@ export default function CodeLabAbout() {
       lineHeight: 1.6,
       minHeight: '100vh',
       width: '100%',
-      padding: '0 2rem', // Add padding for smaller screens
+      padding: '0 8rem', // Add padding for smaller screens
       boxSizing: 'border-box',
       margin: 0, // Remove default margin
     },
@@ -281,6 +281,7 @@ export default function CodeLabAbout() {
       background: 'linear-gradient(90deg, #6366f1, #8b5cf6)',
     },
     storyText: {
+      justify: 'left',
       fontSize: '1.1rem',
       color: theme === 'dark' ? '#d1d5db' : '#374151',
       marginBottom: '25px',
@@ -716,7 +717,7 @@ export default function CodeLabAbout() {
             </div>
            </div>
 
-        <div style={styles.statsSection as React.CSSProperties} className="stats-section">
+        {/* <div style={styles.statsSection as React.CSSProperties} className="stats-section">
           <div style={styles.statsGrid}>
             <div style={styles.statItem}>
               <span style={styles.statNumber}>150+</span>
@@ -728,7 +729,7 @@ export default function CodeLabAbout() {
               <span style={styles.statLabel as React.CSSProperties}>{t('about.stats.technologies')}</span>
             </div>
           </div>
-        </div>
+        </div> */}
         
       </div>
     </div>

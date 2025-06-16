@@ -113,16 +113,38 @@ const Portfolio: React.FC = () => {
   ];
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === projects.length - 3 ? 0 : prevIndex + 1
-    );
-  };
+  const maxIndex = Math.max(0, projects.length - getVisibleSlides());
+  setCurrentIndex((prevIndex) => 
+    prevIndex >= maxIndex ? 0 : prevIndex + 1
+  );
+};
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? projects.length - 3 : prevIndex - 1
-    );
+const prevSlide = () => {
+  const maxIndex = Math.max(0, projects.length - getVisibleSlides());
+  setCurrentIndex((prevIndex) => 
+    prevIndex === 0 ? maxIndex : prevIndex - 1
+  );
+};
+
+const getVisibleSlides = () => {
+  if (typeof window === 'undefined') return 3; // Default for SSR
+  if (window.innerWidth >= 1024) return 3; // Desktop
+  if (window.innerWidth >= 640) return 2;  // Tablet
+  return 1; // Mobile
+};
+
+// Add window resize handler
+React.useEffect(() => {
+  const handleResize = () => {
+    const maxIndex = Math.max(0, projects.length - getVisibleSlides());
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
   };
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, [currentIndex, projects.length]);
+
 
   const openProjectDetails = (project: Project) => {
     setSelectedProject(project);
@@ -133,7 +155,7 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="portfolio" className="py-12 sm:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 section-reveal">
@@ -151,75 +173,73 @@ const Portfolio: React.FC = () => {
         {/* Carousel */}
         <div className="relative section-reveal">
           <div className="overflow-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
-            >
-              {projects.map((project, index) => (
-                <div
-                  key={project.id}
-                  className="w-1/3 flex-shrink-0 px-4"
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ 
+              transform: `translateX(-${currentIndex * (100 / getVisibleSlides())}%)`,
+              
+            }}
+          >
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-4"
+              >
+                <div 
+                  className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer border border-gray-100 dark:border-gray-700 transition-colors duration-300"
+                  onClick={() => openProjectDetails(project)}
                 >
-                  <div 
-                    className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer border border-gray-100 dark:border-gray-700 transition-colors duration-300"
-                    onClick={() => openProjectDetails(project)}
-                  >
-                    <div className="relative">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-48 object-cover"
-                      />
-                      <div className="absolute top-4 right-4">
-                        <div className={`p-2 rounded-lg ${
-                          project.category === 'web' 
-                            ? 'bg-blue-500' 
-                            : 'bg-purple-500'
-                        }`}>
-                          {project.category === 'web' ? (
-                            <Globe className="w-4 h-4 text-white" />
-                          ) : (
-                            <Smartphone className="w-4 h-4 text-white" />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                        {project.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                        {project.description}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
-                            +{project.technologies.length - 3}
-                          </span>
+                  <div className="relative">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-40 sm:h-48 object-cover"
+                    />
+                    <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
+                      <div className={`p-1.5 sm:p-2 rounded-lg ${
+                        project.category === 'web' 
+                          ? 'bg-blue-500' 
+                          : 'bg-purple-500'
+                      }`}>
+                        {project.category === 'web' ? (
+                          <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                        ) : (
+                          <Smartphone className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                         )}
                       </div>
-                      
-                      <button className="text-blue-600 dark:text-blue-400 font-medium text-sm hover:text-blue-700 dark:hover:text-blue-300 transition-colors flex items-center space-x-1">
-                        <span>{t('portfolio.details')}</span>
-                        <ExternalLink className="w-4 h-4" />
-                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 line-clamp-3">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                      {project.technologies.slice(0, 2).map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 2 && (
+                        <span className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
+                          +{project.technologies.length - 2}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+        </div>
 
           {/* Navigation Buttons */}
           <button
@@ -238,7 +258,7 @@ const Portfolio: React.FC = () => {
         </div>
 
         {/* Indicators */}
-        <div className="flex justify-center mt-8 space-x-2">
+        {/* <div className="flex justify-center mt-8 space-x-2">
           {Array.from({ length: projects.length - 2 }).map((_, index) => (
             <button
               key={index}
@@ -250,7 +270,7 @@ const Portfolio: React.FC = () => {
               }`}
             />
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Project Details Modal */}

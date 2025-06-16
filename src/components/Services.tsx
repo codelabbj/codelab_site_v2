@@ -188,11 +188,11 @@ const Services: React.FC = () => {
     ];
 
   return (
-    <section id="services" className="min-h-screen px-5 py-16 overflow-x-hidden bg-white dark:bg-gray-900 transition-colors duration-300" 
+    <section id="services" className="min-h-screen  overflow-x-hidden bg-white dark:bg-gray-900 transition-colors duration-300" 
          style={{
            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif'
          }}>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-20 section-reveal">
           <h1 className="text-6xl md:text-7xl font-extrabold mb-8 tracking-tight">
@@ -207,11 +207,11 @@ const Services: React.FC = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16 px-2 sm:px-4">
           {services.map((service, index) => (
             <div
               key={index}
-              className="section-reveal relative p-10 rounded-3xl border transition-all duration-500 ease-out hover:-translate-y-2 group overflow-hidden bg-gray-50 dark:bg-gray-800 backdrop-blur-sm border-purple-500/20 hover:border-purple-400/40 hover:shadow-2xl hover:shadow-purple-500/10"
+              className="section-reveal relative p-6 sm:p-10 rounded-3xl border transition-all duration-500 ease-out hover:-translate-y-2 group overflow-hidden bg-gray-50 dark:bg-gray-800 backdrop-blur-sm border-purple-500/20 hover:border-purple-400/40 hover:shadow-2xl hover:shadow-purple-500/10"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Hover overlay */}
@@ -250,14 +250,14 @@ const Services: React.FC = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center mt-20 p-16 rounded-3xl border section-reveal bg-white dark:bg-gray-900 backdrop-blur-sm border-purple-500/20">
+        <div className="text-center mt-12 sm:mt-20 p-6 sm:p-8 md:p-16 rounded-2xl sm:rounded-3xl border section-reveal bg-white dark:bg-gray-900 backdrop-blur-sm border-purple-500/20 mx-2 sm:mx-4">
           <h2 className="text-4xl md:text-5xl font-bold mb-5 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             {t('services.cta.title')}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             {t('services.cta.subtitle')}
           </p>
-          <a href='#contact' className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-10 py-5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1 text-lg">
+          <a href='#contact' className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1 text-base sm:text-lg">
             {t('services.cta.button')}
           </a>
         </div>
