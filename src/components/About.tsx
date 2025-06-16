@@ -194,7 +194,7 @@ export default function CodeLabAbout() {
       lineHeight: 1.6,
       minHeight: '100vh',
       width: '100%',
-      padding: '0 3rem', // Reduced padding for mobile
+      padding: '0 2rem', // Reduced padding for mobile
       boxSizing: 'border-box',
       margin: 0,
     },
