@@ -194,7 +194,7 @@ export default function CodeLabAbout() {
       lineHeight: 1.6,
       minHeight: '100vh',
       width: '100%',
-      padding: '0 2rem', // Reduced padding for mobile
+      padding: '0', // Reduced padding for mobile
       boxSizing: 'border-box',
       margin: 0,
     },
@@ -524,114 +524,7 @@ export default function CodeLabAbout() {
       box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
     }
 
-    /* Responsive Media Queries */
-    @media (max-width: 1200px) {
-      .container {
-        padding: 60px 20px !important;
-      }
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 0 1rem !important;
-      }
-      
-      .container {
-        padding: 40px 15px !important;
-      }
-      
-      .header {
-        margin-bottom: 40px !important;
-      }
-      
-      .content-grid {
-        grid-template-columns: 1fr !important;
-        gap: 30px !important;
-        margin-top: 2rem !important;
-      }
-      
-      .features-grid {
-        grid-template-columns: 1fr !important;
-        gap: 15px !important;
-        margin-top: 40px !important;
-        margin-bottom: 40px !important;
-      }
-      
-      .stats-section {
-        padding: 25px 15px !important;
-        margin-top: 40px !important;
-      }
-      
-      .stats-grid {
-        gap: 25px !important;
-      }
-      
-      .tech-tags-container {
-        gap: 8px !important;
-        margin-top: 1.5rem !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 0 0.5rem !important;
-      }
-      
-      .container {
-        padding: 30px 10px !important;
-      }
-      
-      .header {
-        margin-bottom: 30px !important;
-      }
-      
-      .content-grid {
-        gap: 20px !important;
-        margin-top: 1.5rem !important;
-      }
-      
-      .features-grid {
-        gap: 12px !important;
-        margin-top: 30px !important;
-        margin-bottom: 30px !important;
-      }
-      
-      .stats-section {
-        padding: 20px 10px !important;
-        margin-top: 30px !important;
-      }
-      
-      .stats-grid {
-        gap: 20px !important;
-      }
-      
-      .tech-tags-container {
-        gap: 6px !important;
-        margin-top: 1rem !important;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .content-grid {
-        gap: 15px !important;
-      }
-      
-      .features-grid {
-        gap: 10px !important;
-      }
-      
-      .stats-grid {
-        gap: 15px !important;
-      }
-    }
-
-    /* Hover effects only on non-touch devices */
-    @media (hover: hover) and (pointer: fine) {
-      .tech-tag:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-    }
+    
   `;
 
   return (
