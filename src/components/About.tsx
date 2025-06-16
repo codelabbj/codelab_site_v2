@@ -502,16 +502,16 @@ export default function CodeLabAbout() {
       z-index: 1;
     }
 
-    .story-section-h2-after {
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, #6366f1, #8b5cf6);
-      content: '';
-      pointer-events: none;
-    }
+    // .story-section-h2-after {
+    //   position: absolute;
+    //   bottom: -8px;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 2px;
+    //   background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    //   content: '';
+    //   pointer-events: none;
+    // }
 
     .feature-card:nth-child(2) { animation-delay: 0.2s; }
     .feature-card:nth-child(3) { animation-delay: 0.4s; }
@@ -573,7 +573,7 @@ export default function CodeLabAbout() {
       <style dangerouslySetInnerHTML={{ __html: keyframes }} />
       
       
-        <div className="story-section-h2-after"></div>
+        {/* <div className="story-section-h2-after"></div> */}
         <div style={styles.header as React.CSSProperties} className="header">
           {/* <div style={styles.headerBefore}></div> */}
           {/* <div style={styles.headerBefore} aria-hidden="true"></div> */}
@@ -584,7 +584,7 @@ export default function CodeLabAbout() {
           <div style={styles.storySection}>
             <h2 style={{...styles.storySectionH2, position: 'relative'}}>
             <div className="vision-card-before"></div>
-              <div className="story-section-h2-after"> </div>
+              {/* <div className="story-section-h2-after"> </div> */}
               {t('about.story.title')}
             </h2>
             <p style={styles.storyText}>

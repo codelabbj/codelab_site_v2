@@ -29,7 +29,7 @@ function App() {
           <About />
           <Testimonials />
           <Contact />
-          <Footer />
+          <Footer /> 
         </div>
       </LanguageProvider>
     </ThemeProvider>
