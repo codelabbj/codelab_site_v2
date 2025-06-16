@@ -195,12 +195,12 @@ const Services: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-20 section-reveal">
-          <h1 className="text-6xl md:text-7xl font-extrabold mb-8 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-8 tracking-tight">
            <span className='text-black dark:text-white'> {t('services.title').split(' ')[0]}{' '} </span>
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               {t('services.title').split(' ')[1]}
             </span>
-          </h1>
+          </h2>
           <p className="text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto text-gray-600 dark:text-gray-300 font-light">
             {t('services.subtitle')}
           </p>
