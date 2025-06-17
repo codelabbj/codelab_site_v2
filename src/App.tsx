@@ -19,10 +19,10 @@ function App() {
     
     <ThemeProvider>
       <LanguageProvider>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
+        <div className="min-h-screen w-full bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
           <Header />
-          <br/>
-          <br/>
+          
+          
           <Hero />
           <Services />
           <Portfolio />
