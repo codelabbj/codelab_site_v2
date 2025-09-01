@@ -39,29 +39,55 @@ if (typeof document !== "undefined" && !document.getElementById("testimonials-st
 const Testimonials: React.FC = () => {
   const { t } = useLanguage();
 
+  // const testimonials = [
+  //   {
+  //     name: "Marie Dubois",
+  //     role: "CTO, TechStart",
+  //     content: "CodeLab a transformé notre approche du développement. Leur expertise technique et leur accompagnement ont été déterminants dans le succès de notre plateforme.",
+  //     rating: 5,
+  //     avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150"
+  //   },
+  //   {
+  //     name: "Pierre Martin",
+  //     role: "Développeur Freelance",
+  //     content: "Les formations CodeLab m'ont permis de maîtriser React et Node.js. Aujourd'hui, j'ai multiplié mes revenus par 3 grâce à ces nouvelles compétences.",
+  //     rating: 5,
+  //     avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
+  //   },
+  //   {
+  //     name: "Sarah Johnson",
+  //     role: "Product Manager, InnovCorp",
+  //     content: "Professionnalisme exemplaire et résultats au-delà de nos attentes. CodeLab comprend vraiment les enjeux business derrière chaque projet technique.",
+  //     rating: 5,
+  //     avatar: "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=150"
+  //   }
+  // ];
+
   const testimonials = [
-    {
-      name: "Marie Dubois",
-      role: "CTO, TechStart",
-      content: "CodeLab a transformé notre approche du développement. Leur expertise technique et leur accompagnement ont été déterminants dans le succès de notre plateforme.",
-      rating: 5,
-      avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150"
-    },
-    {
-      name: "Pierre Martin",
-      role: "Développeur Freelance",
-      content: "Les formations CodeLab m'ont permis de maîtriser React et Node.js. Aujourd'hui, j'ai multiplié mes revenus par 3 grâce à ces nouvelles compétences.",
-      rating: 5,
-      avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150"
-    },
-    {
-      name: "Sarah Johnson",
-      role: "Product Manager, InnovCorp",
-      content: "Professionnalisme exemplaire et résultats au-delà de nos attentes. CodeLab comprend vraiment les enjeux business derrière chaque projet technique.",
-      rating: 5,
-      avatar: "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=150"
-    }
-  ];
+  {
+    name: "Aminatou Sanni",
+    role: "CEO, FinTech Bénin",
+    content: "Grâce à CodeLab, nous avons pu lancer notre application de paiement mobile en un temps record. Leur expertise locale et leur compréhension du marché africain sont inestimables.",
+    rating: 5,
+    avatar: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150"
+  },
+  {
+    name: "Jean-Marc Adjovi",
+    role: "Développeur Full-Stack, Cotonou",
+    content: "Les formations de CodeLab m'ont permis de décrocher mes premiers contrats à l'international. J'ai triplé mes revenus en moins d'un an.",
+    rating: 5,
+    avatar: "https://images.pexels.com/photos/3184611/pexels-photo-3184611.jpeg?auto=compress&cs=tinysrgb&w=150"
+  },
+  {
+    name: "Chinonso Okafor",
+    role: "Product Manager, Lagos",
+    content: "Un partenaire de confiance. CodeLab comprend les réalités africaines et propose des solutions adaptées aux besoins de notre marché numérique.",
+    rating: 5,
+    avatar: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=150"
+  }
+];
+
+
 
   const partners = [
     { name: "Minfo", logo: "/minfo.avif" },
