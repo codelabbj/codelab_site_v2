@@ -138,7 +138,7 @@ export default function PortfolioPage () {
                 <h3 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white mb-2 leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 line-clamp-1">
                   {project.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-4 leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-1.5">
