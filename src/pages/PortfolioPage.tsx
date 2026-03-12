@@ -79,19 +79,19 @@ export default function PortfolioPage () {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
 
         {/* Filter tabs */}
-        <div className="flex items-center gap-2 mb-10 bg-gray-100 dark:bg-gray-800 p-1.5 rounded-xl w-fit">
+        <div className="flex items-center gap-1 sm:gap-2 mb-10 bg-gray-100 dark:bg-gray-800 p-1 sm:p-1.5 rounded-xl w-full sm:w-fit">
           {filters.map(({ key, label, count }) => (
             <button
               key={key}
               onClick={() => setFilter(key)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
                 filter === key
                   ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
                   : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
               }`}
             >
               {label}
-              <span className={`text-xs px-1.5 py-0.5 rounded-md font-medium ${
+              <span className={`text-xs px-1 sm:px-1.5 py-0.5 rounded-md font-medium ${
                 filter === key
                   ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
                   : 'bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300'
