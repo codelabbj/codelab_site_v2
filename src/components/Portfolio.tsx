@@ -285,7 +285,7 @@ const Portfolio: React.FC = () => {
                 </div>
               ))}
               <div className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-4">
-                <a onClick={() => { window.scrollTo(0, 0); navigate('/portfolio'); }} className="group flex flex-col items-center justify-center h-full min-h-[280px] bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl border-2 border-dashed border-blue-200 dark:border-blue-700/50 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg">
+                <a href="/portfolio" className="group flex flex-col items-center justify-center h-full min-h-[280px] bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl border-2 border-dashed border-blue-200 dark:border-blue-700/50 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <Layers className="w-6 h-6 text-white" />
                   </div>
