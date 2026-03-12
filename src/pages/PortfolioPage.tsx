@@ -20,7 +20,7 @@ const projects: Project[] = PROJECTS;
 
 type Filter = 'all' | 'web' | 'mobile'|'api';
 
-export const PortfolioPage = () => {
+export default function PortfolioPage () {
   const [filter, setFilter] = useState<Filter>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -168,5 +168,3 @@ export const PortfolioPage = () => {
     </div>
   );
 };
-
-export default PortfolioPage;

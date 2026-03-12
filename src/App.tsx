@@ -11,7 +11,7 @@ import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { PortfolioPage } from "./pages/PortfolioPage.tsx";
+import PortfolioPage from "./pages/PortfolioPage.tsx";
 
 function HomePage() {
   useScrollReveal();
