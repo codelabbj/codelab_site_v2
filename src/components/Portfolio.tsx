@@ -3,6 +3,7 @@ import {ChevronLeft, ChevronRight, Smartphone, Globe, Expand, Layers, Code2} fro
 import { useLanguage } from '../contexts/LanguageContext';
 import {ProjectDetails} from "./ProjectDetails.tsx";
 import {Project, PROJECTS} from "../utils/CONSTANTS.ts";
+import {useNavigate} from "react-router-dom";
 
 
 const AUTO_SCROLL_INTERVAL = 3000;
@@ -10,6 +11,7 @@ const PAUSE_AFTER_INTERACTION = 4000;
 
 const Portfolio: React.FC = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
   const [currentIndex3, setCurrentIndex3] = useState(0);
@@ -283,7 +285,7 @@ const Portfolio: React.FC = () => {
                 </div>
               ))}
               <div className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-4">
-                <a href="/portfolio" className="group flex flex-col items-center justify-center h-full min-h-[280px] bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl border-2 border-dashed border-blue-200 dark:border-blue-700/50 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg">
+                <a onClick={()=>navigate('/portfolio')} className="group flex flex-col items-center justify-center h-full min-h-[280px] bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl border-2 border-dashed border-blue-200 dark:border-blue-700/50 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <Layers className="w-6 h-6 text-white" />
                   </div>
