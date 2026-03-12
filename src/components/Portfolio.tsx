@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {ChevronLeft, ChevronRight, Smartphone, Globe, Expand, Layers} from 'lucide-react';
+import {ChevronLeft, ChevronRight, Smartphone, Globe, Expand, Layers, Code2} from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import {ProjectDetails} from "./ProjectDetails.tsx";
 import {Project, PROJECTS} from "../utils/CONSTANTS.ts";
@@ -254,8 +254,8 @@ const Portfolio: React.FC = () => {
                       <div className="absolute top-3 left-3 flex gap-1">
                         {
                           project.category.map((category) => (
-                              <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold text-white backdrop-blur-sm ${category === 'web' ? 'bg-blue-500/90' : 'bg-purple-500/90'}`}>
-                                {category === 'web' ? <Globe className="w-3 h-3" /> : <Smartphone className="w-3 h-3" />}
+                              <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold text-white backdrop-blur-sm ${category === 'web' ? 'bg-blue-500/90' : category === 'api' ? 'bg-green-500/90' : 'bg-purple-500/90'}`}>
+                                {category === 'web' ? <Globe className="w-3 h-3" /> : category === 'api' ? <Code2 className="w-3 h-3" /> : <Smartphone className="w-3 h-3" />}
                               </div>
                           ))
                         }

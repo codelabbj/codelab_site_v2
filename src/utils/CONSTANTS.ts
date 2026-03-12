@@ -10,24 +10,6 @@ export interface Project {
 }
 export const PROJECTS:Project[] =  [
     {
-        id: 1,
-        title: "Blaffa",
-        category: ["web","mobile"],
-        description: "Blaffa est une plateforme de paiement unifiée dédiée aux paris sportifs, permettant aux utilisateurs d'effectuer des transactions instantanées vers n'importe quelle application de paris connectée depuis une interface unique. L'écosystème repose sur une architecture multi-agrégateurs de paiement mobile, offrant à l'administrateur la flexibilité de basculer entre les opérateurs en temps réel pour garantir une disponibilité maximale du service.",
-        image: "/projects/baffla-site.png",
-        technologies: ["Next.js", "React Native", "TailwindCSS", "Django", "PostgreSQL", "REST API"],
-        link: "https://blaffa.net",
-        features: [
-            "Application mobile cross-platform (iOS & Android)",
-            "Site web responsive pour les utilisateurs finaux",
-            "Transactions instantanées via l'API BlaffaPay",
-            "Connexion à de multiples agrégateurs de paiement mobile",
-            "Changement dynamique d'opérateurs de paiement",
-            "Tableau de bord administrateur complet (gestion des transactions, utilisateurs et opérateurs)",
-            "Interface utilisateur épurée et intuitive"
-        ]
-    },
-    {
         id: 2,
         title: "CENOF",
         category: ["web", "mobile"],
@@ -338,6 +320,24 @@ export const PROJECTS:Project[] =  [
             "Application mobile cross-platform (iOS & Android)",
             "Site web responsive pour les utilisateurs finaux",
             "Transactions instantanées vers les apps de paris connectées",
+            "Connexion à de multiples agrégateurs de paiement mobile",
+            "Changement dynamique d'opérateurs de paiement",
+            "Tableau de bord administrateur complet (gestion des transactions, utilisateurs et opérateurs)",
+            "Interface utilisateur épurée et intuitive"
+        ]
+    },
+    {
+        id: 1,
+        title: "Blaffa",
+        category: ["web","mobile"],
+        description: "Blaffa est une plateforme de paiement unifiée dédiée aux paris sportifs, permettant aux utilisateurs d'effectuer des transactions instantanées vers n'importe quelle application de paris connectée depuis une interface unique. L'écosystème repose sur une architecture multi-agrégateurs de paiement mobile, offrant à l'administrateur la flexibilité de basculer entre les opérateurs en temps réel pour garantir une disponibilité maximale du service.",
+        image: "/projects/baffla-site.png",
+        technologies: ["Next.js", "React Native", "TailwindCSS", "Django", "PostgreSQL", "REST API"],
+        link: "https://blaffa.net",
+        features: [
+            "Application mobile cross-platform (iOS & Android)",
+            "Site web responsive pour les utilisateurs finaux",
+            "Transactions instantanées via l'API BlaffaPay",
             "Connexion à de multiples agrégateurs de paiement mobile",
             "Changement dynamique d'opérateurs de paiement",
             "Tableau de bord administrateur complet (gestion des transactions, utilisateurs et opérateurs)",

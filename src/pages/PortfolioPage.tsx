@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Smartphone, Globe, Expand } from 'lucide-react';
+import { Smartphone, Globe, Expand, Code2 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import {PROJECTS} from "../utils/CONSTANTS.ts";
@@ -18,7 +18,7 @@ interface Project {
 
 const projects: Project[] = PROJECTS;
 
-type Filter = 'all' | 'web' | 'mobile';
+type Filter = 'all' | 'web' | 'mobile'|'api';
 
 export const PortfolioPage = () => {
   const [filter, setFilter] = useState<Filter>('all');
@@ -27,11 +27,13 @@ export const PortfolioPage = () => {
   const filtered = filter === 'all' ? projects : projects.filter(p => p.category.some(c => c===filter));
   const webCount = projects.filter(p => p.category.some(c=> c==="web")).length;
   const mobileCount = projects.filter(p => p.category.some(c => c=== "mobile")).length;
+  const apiCount = projects.filter(p => p.category.some(c=> c==="api")).length
 
   const filters: { key: Filter; label: string; count: number }[] = [
     { key: 'all',    label: 'Tous',   count: projects.length },
     { key: 'web',    label: 'Web',    count: webCount },
     { key: 'mobile', label: 'Mobile', count: mobileCount },
+      { key: 'api', label: 'API',   count: apiCount },
   ];
 
   return (
@@ -117,9 +119,9 @@ export const PortfolioPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-3 left-3 flex gap-1">
                   {project.category.map((category) => (
-                      <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold text-white backdrop-blur-sm ${category === 'web' ? 'bg-blue-500/90' : 'bg-purple-500/90'}`}>
-                        {category === 'web' ? <Globe className="w-3 h-3" /> : <Smartphone className="w-3 h-3" />}
-                        {category === 'web' ? 'Web' : 'Mobile'}
+                      <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold text-white backdrop-blur-sm ${category === 'web' ? 'bg-blue-500/90' : category === 'api' ? 'bg-green-500/90' : 'bg-purple-500/90'}`}>
+                        {category === 'web' ? <Globe className="w-3 h-3" /> : category === 'api' ? <Code2 className="w-3 h-3" /> : <Smartphone className="w-3 h-3" />}
+                        {category === 'web' ? 'Web' : category === 'api' ? 'API' : 'Mobile'}
                       </div>
                   ))
                   }

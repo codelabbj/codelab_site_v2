@@ -1,5 +1,5 @@
 import {Project} from "../utils/CONSTANTS.ts";
-import {ExternalLink, Globe, Smartphone, X} from "lucide-react";
+import {ExternalLink, Globe, Smartphone, X, Code2} from "lucide-react";
 import {useLanguage} from "../contexts/LanguageContext.tsx";
 
 interface ProjectDetailsInterface {
@@ -33,9 +33,9 @@ export const ProjectDetails = ({selectedProject,onClose}:ProjectDetailsInterface
                     </button>
                     <div className="absolute bottom-4 left-4 flex gap-1">
                         {selectedProject.category.map((category) => (
-                            <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold text-white backdrop-blur-sm ${category === 'web' ? 'bg-blue-500/90' : 'bg-purple-500/90'}`}>
-                                {category === 'web' ? <Globe className="w-3 h-3" /> : <Smartphone className="w-3 h-3" />}
-                                {category === 'web' ? 'Web' : 'Mobile'}
+                            <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold text-white backdrop-blur-sm ${category === 'web' ? 'bg-blue-500/90' : category === 'api' ? 'bg-green-500/90' : 'bg-purple-500/90'}`}>
+                                {category === 'web' ? <Globe className="w-3 h-3" /> : category === 'api' ? <Code2 className="w-3 h-3" /> : <Smartphone className="w-3 h-3" />}
+                                {category === 'web' ? 'Web' : category === 'api' ? 'API' : 'Mobile'}
                             </div>
                         ))}
 
