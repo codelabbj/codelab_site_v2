@@ -326,4 +326,22 @@ export const PROJECTS:Project[] =  [
             "Interface utilisateur épurée et intuitive"
         ]
     },
+    {
+        id: 20,
+        title: "Africash",
+        category: ["web", "mobile"],
+        description: "Africash est une plateforme de paiement dédiée aux paris sportifs, offrant aux utilisateurs un accès unifié à l'ensemble de leurs applications de paris depuis un compte unique. Construite sur une architecture multi-agrégateurs, elle garantit des transactions instantanées et une haute disponibilité du service grâce à une gestion dynamique des opérateurs Mobile Money par les administrateurs.",
+        image: "/projects/africash.png",
+        technologies: ["Next.js", "React Native", "TailwindCSS", "Django", "PostgreSQL", "REST API"],
+        link: "https://africash.io/",
+        features: [
+            "Application mobile cross-platform (iOS & Android)",
+            "Site web responsive pour les utilisateurs finaux",
+            "Transactions instantanées vers les apps de paris connectées",
+            "Connexion à de multiples agrégateurs de paiement mobile",
+            "Changement dynamique d'opérateurs de paiement",
+            "Tableau de bord administrateur complet (gestion des transactions, utilisateurs et opérateurs)",
+            "Interface utilisateur épurée et intuitive"
+        ]
+    },
 ];
