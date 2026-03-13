@@ -188,11 +188,9 @@ const Services: React.FC = () => {
     ];
 
   return (
-    <section id="services" className="min-h-screen  overflow-x-hidden bg-white dark:bg-gray-900 transition-colors duration-300" 
-         style={{
-           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif'
-         }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <section id="services" className="overflow-x-hidden bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
         {/* Header */}
         <div className="text-center mb-20 section-reveal">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-8 tracking-tight">
@@ -201,66 +199,70 @@ const Services: React.FC = () => {
               {t('services.title').split(' ')[1]}
             </span>
           </h2>
-          <p className="text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto text-gray-600 dark:text-gray-300 font-light">
+          <p className="text-lg leading-relaxed max-w-2xl mx-auto text-gray-500 dark:text-gray-400">
             {t('services.subtitle')}
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16 px-2 sm:px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, index) => (
             <div
               key={index}
-              className="section-reveal relative p-6 sm:p-10 rounded-3xl border transition-all duration-500 ease-out hover:-translate-y-2 group overflow-hidden bg-gray-50 dark:bg-gray-800 backdrop-blur-sm border-purple-500/20 hover:border-purple-400/40 hover:shadow-2xl hover:shadow-purple-500/10"
-              style={{ animationDelay: `${index * 150}ms` }}
+              className="section-reveal group relative bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700/60 hover:border-blue-300/60 dark:hover:border-blue-700/60 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-900/30 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] overflow-hidden"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Hover overlay */}
-              <div 
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background: 'bg-white dark:bg-gray-900',
-                }}
-              />
-              
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl text-3xl mb-8 shadow-lg">
-                  {service.icon}
-                </div>
-                
-                <h3 className="text-3xl font-bold mb-5 text-gray-900 dark:text-white leading-tight">
-                  {service.title}
-                </h3>
-                
-                <p className="text-lg leading-relaxed mb-8 text-gray-600 dark:text-gray-300">
-                  {service.description}
-                </p>
-                
-                <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start text-gray-600 dark:text-gray-300">
-                      <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      <span className="leading-relaxed">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+
+              {/* Index watermark */}
+              <span className="absolute top-4 right-5 text-4xl font-black text-gray-100 dark:text-gray-700/60 select-none leading-none">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              {/* Icon */}
+              <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border border-blue-100 dark:border-blue-800/40 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform duration-300">
+                {service.icon}
               </div>
+
+              <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white leading-tight">
+                {service.title}
+              </h3>
+
+              <p className="text-sm leading-relaxed mb-4 text-gray-500 dark:text-gray-400">
+                {service.description}
+              </p>
+
+              <ul className="space-y-1.5">
+                {service.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <div className="w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
 
         {/* CTA Section */}
-        <div className="text-center mt-12 sm:mt-20 p-6 sm:p-8 md:p-16 rounded-2xl sm:rounded-3xl border section-reveal bg-white dark:bg-gray-900 backdrop-blur-sm border-purple-500/20 mx-2 sm:mx-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            {t('services.cta.title')}
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            {t('services.cta.subtitle')}
-          </p>
-          <a href='#contact' className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1 text-base sm:text-lg">
-            {t('services.cta.button')}
-          </a>
+        <div className="relative mt-16 section-reveal overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-700/60 bg-white dark:bg-gray-800">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/60 via-transparent to-purple-50/60 dark:from-blue-900/10 dark:to-purple-900/10 pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-40" />
+          <div className="relative text-center px-6 py-14 sm:py-16 md:py-20">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+              {t('services.cta.title')}
+            </h2>
+            <p className="text-base text-gray-500 dark:text-gray-400 mb-8 max-w-xl mx-auto">
+              {t('services.cta.subtitle')}
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-0.5 text-sm"
+            >
+              {t('services.cta.button')}
+            </a>
+          </div>
         </div>
+
       </div>
     </section>
     

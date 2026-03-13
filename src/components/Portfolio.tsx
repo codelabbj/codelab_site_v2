@@ -3,27 +3,18 @@ import {ChevronLeft, ChevronRight, Smartphone, Globe, Expand, Layers, Code2} fro
 import { useLanguage } from '../contexts/LanguageContext';
 import {ProjectDetails} from "./ProjectDetails.tsx";
 import {Project, PROJECTS} from "../utils/CONSTANTS.ts";
-import {useNavigate} from "react-router-dom";
 
 
-const AUTO_SCROLL_INTERVAL = 3000;
 const PAUSE_AFTER_INTERACTION = 4000;
 
 const Portfolio: React.FC = () => {
   const { t } = useLanguage();
-  const navigate = useNavigate();
   const [currentIndex1, setCurrentIndex1] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
   const [currentIndex3, setCurrentIndex3] = useState(0);
-  const [paused1, setPaused1] = useState(false);
-  const [paused2, setPaused2] = useState(false);
   const [paused3, setPaused3] = useState(false);
-  const [skipTransition1, setSkipTransition1] = useState(false);
-  const [skipTransition2, setSkipTransition2] = useState(false);
   const [skipTransition3, setSkipTransition3] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const pauseTimer1 = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const pauseTimer2 = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pauseTimer3 = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const projects: Project[] = PROJECTS.slice(0,4);
@@ -78,38 +69,7 @@ const Portfolio: React.FC = () => {
     else setCurrentIndex((p) => p - 1);
     triggerPause(setPaused, timerRef);
   };
-  
-  // Auto-scroll: carousel 1 goes left (next), carousel 2 goes right (prev)
-  useEffect(() => {
-    if (paused1) return;
-    const id = setInterval(() => {
-      setCurrentIndex1((prev) => {
-        if (prev >= getMaxIndex()) {
-          setSkipTransition1(true);
-          requestAnimationFrame(() => requestAnimationFrame(() => setSkipTransition1(false)));
-          return 0;
-        }
-        return prev + 1;
-      });
-    }, AUTO_SCROLL_INTERVAL);
-    return () => clearInterval(id);
-  }, [paused1, projects.length]);
 
-  useEffect(() => {
-    if (paused2) return;
-    const id = setInterval(() => {
-      setCurrentIndex2((prev) => {
-        if (prev === 0) {
-          setSkipTransition2(true);
-          requestAnimationFrame(() => requestAnimationFrame(() => setSkipTransition2(false)));
-          return getMaxIndex();
-        }
-        return prev - 1;
-      });
-    }, AUTO_SCROLL_INTERVAL);
-    return () => clearInterval(id);
-  }, [paused2, projects.length]);
-  
   useEffect(() => {
     const handleResize = () => {
       const max = getMaxIndex();
@@ -143,100 +103,6 @@ const Portfolio: React.FC = () => {
             {t('portfolio.subtitle')}
           </p>
         </div>
-        {/*
-        * Carousel 1 — auto-scrolls left
-        <div className="relative section-reveal">
-          <div className="overflow-hidden">
-            <div
-                className={`flex ${skipTransition1 ? '' : 'transition-transform duration-500 ease-in-out'}`}
-                style={{ transform: `translateX(-${currentIndex1 * (100 / getVisibleSlides())}%)` }}
-            >
-              {projects.map((project) => (
-                  <div key={project.id} className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-4">
-                    <div
-                        className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer border border-gray-100 dark:border-gray-700 transition-colors duration-300"
-                        onClick={() => openProjectDetails(project)}
-                    >
-                      <div className="relative">
-                        <img src={project.image} alt={project.title} className="w-full h-40 sm:h-48 object-cover" />
-                        <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
-                          <div className={`p-1.5 sm:p-2 rounded-lg ${project.category === 'web' ? 'bg-blue-500' : 'bg-purple-500'}`}>
-                            {project.category === 'web' ? <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-white" /> : <Smartphone className="w-3 h-3 sm:w-4 sm:h-4 text-white" />}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-4 sm:p-6">
-                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">{project.title}</h3>
-                        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 line-clamp-3">{project.description}</p>
-                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
-                          {project.technologies.slice(0, 2).map((tech, techIndex) => (
-                              <span key={techIndex} className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">{tech}</span>
-                          ))}
-                          {project.technologies.length > 2 && (
-                              <span className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">+{project.technologies.length - 2}</span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              ))}
-            </div>
-          </div>
-          <button onClick={() => prevSlide(currentIndex1, setCurrentIndex1, setPaused1, pauseTimer1, setSkipTransition1)} className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white dark:bg-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border dark:border-gray-700">
-            <ChevronLeft className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-          </button>
-          <button onClick={() => nextSlide(currentIndex1, setCurrentIndex1, setPaused1, pauseTimer1, setSkipTransition1)} className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white dark:bg-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border dark:border-gray-700">
-            <ChevronRight className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-          </button>
-        </div>
-
-        * Carousel 2 — auto-scrolls right
-        <div className="relative section-reveal py-3">
-          <div className="overflow-hidden">
-            <div
-                className={`flex ${skipTransition2 ? '' : 'transition-transform duration-500 ease-in-out'}`}
-                style={{ transform: `translateX(-${currentIndex2 * (100 / getVisibleSlides())}%)` }}
-            >
-              {projects.map((project) => (
-                  <div key={project.id} className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-4">
-                    <div
-                        className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer border border-gray-100 dark:border-gray-700 transition-colors duration-300"
-                        onClick={() => openProjectDetails(project)}
-                    >
-                      <div className="relative">
-                        <img src={project.image} alt={project.title} className="w-full h-40 sm:h-48 object-cover" />
-                        <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
-                          <div className={`p-1.5 sm:p-2 rounded-lg ${project.category === 'web' ? 'bg-blue-500' : 'bg-purple-500'}`}>
-                            {project.category === 'web' ? <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-white" /> : <Smartphone className="w-3 h-3 sm:w-4 sm:h-4 text-white" />}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-4 sm:p-6">
-                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">{project.title}</h3>
-                        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 line-clamp-3">{project.description}</p>
-                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
-                          {project.technologies.slice(0, 2).map((tech, techIndex) => (
-                              <span key={techIndex} className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">{tech}</span>
-                          ))}
-                          {project.technologies.length > 2 && (
-                              <span className="px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">+{project.technologies.length - 2}</span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              ))}
-            </div>
-          </div>
-          <button onClick={() => prevSlide(currentIndex2, setCurrentIndex2, setPaused2, pauseTimer2, setSkipTransition2)} className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white dark:bg-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border dark:border-gray-700">
-            <ChevronLeft className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-          </button>
-          <button onClick={() => nextSlide(currentIndex2, setCurrentIndex2, setPaused2, pauseTimer2, setSkipTransition2)} className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white dark:bg-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border dark:border-gray-700">
-            <ChevronRight className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-          </button>
-        </div>
-
-        */}
 
         <div className="relative section-reveal py-3">
           <div className="overflow-hidden py-2">
@@ -307,20 +173,6 @@ const Portfolio: React.FC = () => {
           </button>
         </div>
 
-        {/* Indicators */}
-        {/* <div className="flex justify-center mt-8 space-x-2">
-          {Array.from({ length: projects.length - 2 }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600'
-                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
-              }`}
-            />
-          ))}
-        </div> */}
       </div>
 
       {/* Project Details Modal */}

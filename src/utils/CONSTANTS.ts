@@ -327,6 +327,24 @@ export const PROJECTS:Project[] =  [
         ]
     },
     {
+        id: 21,
+        title: "Cashika",
+        category: ["web", "mobile"],
+        description: "Cashika est une plateforme de paiement tout-en-un dédiée aux amateurs de paris sportifs, leur permettant de centraliser l'ensemble de leurs opérations financières — dépôts et retraits — sur leurs applications de paris préférées depuis une interface unique et sécurisée. Son architecture multi-agrégateurs assure une tolérance aux pannes optimale, avec un basculement en temps réel entre opérateurs Mobile Money à la main de l'administrateur.",
+        image: "/projects/cashika.png",
+        link: "https://www.cashika.net",
+        technologies: ["Next.js", "React Native", "TailwindCSS", "Django", "PostgreSQL", "REST API"],
+        features: [
+            "Application mobile cross-platform (iOS & Android)",
+            "Site web responsive pour les utilisateurs finaux",
+            "Transactions instantanées vers les apps de paris connectées",
+            "Connexion à de multiples agrégateurs de paiement mobile",
+            "Changement dynamique d'opérateurs de paiement",
+            "Tableau de bord administrateur complet (gestion des transactions, utilisateurs et opérateurs)",
+            "Interface utilisateur épurée et intuitive"
+        ]
+    },
+    {
         id: 1,
         title: "Blaffa",
         category: ["web","mobile"],
