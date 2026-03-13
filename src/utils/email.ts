@@ -28,12 +28,13 @@ export const buildEmailHtml = (
 
 export const sendContactEmail = (
   name: string,
+  email: string,
   company: string,
   message: string
 ) =>
   emailjs.send(
     EMAILJS_SERVICE_ID,
     EMAILJS_TEMPLATE_ID,
-    {email:"hello@codelab.bj" , name:name, company:company, message:message},
+    {email:"avallaonesime@gmail.com" , name:name, company:company, message:message, user_email:email},
     EMAILJS_PUBLIC_KEY
   );
