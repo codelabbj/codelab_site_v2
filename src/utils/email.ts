@@ -35,6 +35,6 @@ export const sendContactEmail = (
   emailjs.send(
     EMAILJS_SERVICE_ID,
     EMAILJS_TEMPLATE_ID,
-    {email:"avallaonesime@gmail.com" , name:name, company:company, message:message, user_email:email},
+    {email:"hello@codelab.bj" , name:name, company:company, message:message, user_email:email},
     EMAILJS_PUBLIC_KEY
   );
